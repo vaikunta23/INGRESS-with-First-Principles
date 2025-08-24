@@ -8,7 +8,9 @@ function App() {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/users");
+      // Call backend via nginx (/api → backend service)
+      const res = await fetch("/api/users");
+      if (!res.ok) throw new Error("Failed to fetch users");
       const data = await res.json();
       setUsers(data);
     } catch (e) {
@@ -25,13 +27,14 @@ function App() {
     e.preventDefault();
     if (!name.trim()) return;
     try {
-      const res = await fetch("http://localhost:3000/users", {
+      const res = await fetch("/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ name }),
       });
+      if (!res.ok) throw new Error("Failed to add user");
       const newUser = await res.json();
-      setUsers([...users, newUser]);
+      setUsers((prev) => [...prev, newUser]);
       setName("");
     } catch (e) {
       console.error("Error adding user:", e);

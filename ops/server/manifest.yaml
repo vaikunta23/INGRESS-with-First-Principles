@@ -23,6 +23,9 @@ spec:
           image: saiabhiramjaini/k8s-backend:latest
           ports:
             - containerPort: 3000
+          env:
+            - name: DATABASE_URL
+              value: "postgres://postgres:postgres@db.db-team.svc.cluster.local:5432/postgres"
 ---
 apiVersion: v1
 kind: Service
