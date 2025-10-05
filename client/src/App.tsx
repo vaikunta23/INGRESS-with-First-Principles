@@ -8,7 +8,7 @@ function App() {
   const fetchUsers = async () => {
     setLoading(true);
     try {
-      // Call backend via nginx (/api → backend service)
+      // Call backendd via nginx (/api → backend service)
       const res = await fetch("/api/users");
       if (!res.ok) throw new Error("Failed to fetch users");
       const data = await res.json();
