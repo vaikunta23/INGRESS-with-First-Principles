@@ -112,7 +112,7 @@ events { worker_connections 1024; }
 http {
   server {
     listen 80;
-    server_name app.abhiramtech.in;
+    server_name app.vaikuntech.in;
 
     # Frontend
     location / {
@@ -139,7 +139,7 @@ So with this, only **Nginx LoadBalancer** gets a public IP.
 ### Flow of Requests
 
 
-1. User → `http://app.abhiramtech.in`
+1. User → `http://app.vaikuntech.in`
 2. DNS → resolves to LoadBalancer IP
 3. LoadBalancer → sends traffic to Nginx pod
 4. Nginx → serves frontend on `/`
@@ -197,13 +197,13 @@ First, we need our images available in a registry (so Kubernetes can pull them).
 **Frontend Image**
 
 ```bash
-docker buildx build --platform linux/amd64 -t saiabhiramjaini/k8s-frontend:latest . --push
+docker buildx build --platform linux/amd64 -t poizn2331/k8s-frontend:latest . --push
 ```
 
 **Backend Image**
 
 ```bash
-docker buildx build --platform linux/amd64 -t saiabhiramjaini/k8s-backend:latest . --push
+docker buildx build --platform linux/amd64 -t poizn2331/k8s-backend:latest . --push
 ```
 
 Since I’m using a Mac (which defaults to **arm64**), I add the `--platform linux/amd64` flag so that the images I push to DockerHub are compatible with most Kubernetes clusters, which typically run on **amd64** nodes.
