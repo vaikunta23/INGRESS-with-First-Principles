@@ -98,7 +98,7 @@ But under the hood:
 - `/api` → Backend
 - Backend → Postgres (ClusterIP)
 
-![image.png](https://github.com/user-attachments/assets/c588ff0f-6100-43f5-87ec-1ba9349d68f0)
+![image.png](https://github.com/user-attachments/assets/7a23a47c-644c-43e2-a782-8dc058974733)
 
 
 ### Nginx Configuration
